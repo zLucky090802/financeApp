@@ -1,0 +1,45 @@
+.card-movements{
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+
+
+}
+
+
+.primary-title{
+    color: var(--ion-title-color);
+  }
+
+  .title{
+    font-size: 16px;
+    font-weight: 500;
+    height: 10px;
+  }
+
+  .align-center {
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: flex-end; /* Alinea el texto a la derecha */
+    height: 100; /* Para asegurarse de que ocupa toda la altura disponible */
+    padding-right: 16px;
+}
+
+  .date{
+    font-size: 10px;
+    
+  }
+
+  .align-left{
+    padding-left: 16px;
+  }
+
+  .subtitle{
+    color: var(--ion-subtitle-color);
+  }
+
+  

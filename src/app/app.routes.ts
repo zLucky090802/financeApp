@@ -1,13 +1,16 @@
 import { Routes } from '@angular/router';
 
+import { financeRoutes } from './finance/finance.routes';
+
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+   path:'finance',
+   children:financeRoutes
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
+    path:'**',
+    redirectTo:'finance'
+  }
+
+  
 ];

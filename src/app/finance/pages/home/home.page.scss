@@ -1,0 +1,103 @@
+*{
+    font-family:  "Poppins", sans-serif;
+}
+
+
+.header-content {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: space-between; /* Distribuye los elementos */
+    padding: 10px;
+}
+  
+  .greeting {
+    font-size: 14px;
+    margin: 0;
+    color: #888;
+  }
+  
+  .username {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+  }
+  
+  .profile-pic-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Asegura que la imagen esté centrada */
+  }
+  
+  ion-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .no-shadow {
+    --border-width: 0px; /* Elimina la sombra por defecto */
+    margin-top: env(--ion-safe-area-top, 20px);
+  }
+  
+  .fila-principal {
+    padding-right: 20px;
+  }
+
+  .title-medium {
+    font-size: 16px;  /* Tamaño de fuente */
+    font-weight: 500; /* Peso Semibold */
+    
+  }
+  
+  
+  .fila-interna {
+    justify-content: flex-end; /* Alinea los textos a la derecha */
+    height: 130px;
+  }
+  
+  .alineado.saldo {
+    margin-top: -5px; /* Ajusta este valor según lo necesites */
+    font-size: 16px; /* Opcional: hacer el texto más pequeño */
+    color: var(--ion-subtitle-color);
+}
+  .alineado {
+    text-align: right; /* Asegura que los textos estén alineados a la derecha */
+  }
+
+  .alineado p{
+    font-size: 48px;
+  }
+
+  .subtitle{
+    color: var(--ion-subtitle-color);
+  }
+
+  .alineado-derecha{
+    text-align: right;
+    padding-right: 30px;
+  }
+
+  .card-movements{
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+
+
+  }
+
+  .balance{
+    height: 250px;
+  }
+
+  .title-movements{
+    padding-left: 15px;
+    
+  }
+
+  
+  
