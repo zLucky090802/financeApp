@@ -1,0 +1,37 @@
+.footer{
+    display: flex;
+    background-color: #fff;
+    color: black;
+    min-width: 100%;
+    
+  }
+  ion-toolbar {
+    --background: white;
+    border-top: 1px solid #ddd;
+    position: relative;
+  }
+  
+  ion-button {
+    color: black;
+  }
+  
+  ion-icon {
+    color: black !important;
+    font-size: 24px;
+    visibility: visible;
+  }
+  
+  
+  ion-fab {
+    position: absolute;
+    top: -20px;
+  }
+
+  span{
+    color: var(--ion-subtitle-color);
+    font-size: 30px;
+  }
+
+  .active{
+    color: black;
+  }

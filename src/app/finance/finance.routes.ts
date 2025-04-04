@@ -25,7 +25,7 @@ export const financeRoutes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'accounts',
+        redirectTo: 'home',
         pathMatch: 'full',
       },
     ],
