@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: './layout-pages.page.html',
   styleUrls: ['./layout-pages.page.scss'],
   standalone: true,
-  imports: [IonFooter, IonToolbar, IonGrid, IonRow, IonCol, 
+  imports: [ 
     CommonModule,
     IonContent,
     IonRouterOutlet,

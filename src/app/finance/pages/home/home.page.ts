@@ -13,6 +13,8 @@ import { CardMovementsPage } from '../../components/card-movements/card-movement
 })
 export class HomePage implements OnInit {
 
+  movimientos: any = [];
+
   constructor() { }
 
   ngOnInit() {

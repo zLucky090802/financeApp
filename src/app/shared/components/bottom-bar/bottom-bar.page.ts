@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './bottom-bar.page.html',
   styleUrls: ['./bottom-bar.page.scss'],
   standalone: true,
-  imports: [IonFooter, IonGrid, IonRow, IonCol, IonButton, IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterModule]
+  imports: [IonFooter, IonGrid, IonRow, IonCol, IonButton, IonToolbar, CommonModule, FormsModule, RouterModule]
 })
 export class BottomBarPage implements OnInit {
 

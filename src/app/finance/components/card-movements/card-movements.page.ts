@@ -8,7 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, I
   templateUrl: './card-movements.page.html',
   styleUrls: ['./card-movements.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonRow, IonGrid, IonCol, CommonModule, FormsModule]
+  imports: [ IonRow, IonCol, CommonModule, FormsModule]
 })
 export class CardMovementsPage implements OnInit {
 

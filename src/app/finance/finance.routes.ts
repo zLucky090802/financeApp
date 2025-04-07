@@ -11,10 +11,7 @@ export const financeRoutes: Routes = [
         path: 'home',
         loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage),
       },
-      {
-        path: 'statistics',
-        loadComponent: () => import('./pages/statistics/statistics.page').then(m => m.StatisticsPage),
-      },
+    
       {
         path: 'accounts',
         loadComponent: () => import('./pages/accounts/accounts.page').then(m => m.AccountsPage),

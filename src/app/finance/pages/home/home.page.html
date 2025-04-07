@@ -44,20 +44,27 @@
                   </ion-col>
             </ion-row>
       </ion-grid>
-      <ion-grid>
-            <ion-row class="text-row">
-                  <ion-col size="12" class="center-content">
-                        <p class="empty-text">
-                              ¿Aún no tienes movimientos registrados? Empieza agregando tus ingresos o gastos.
-                        </p>
-                  </ion-col>
-            </ion-row>
+      @if (movimientos.length <= 0) {
 
-            <ion-row class="image-row">
-                  <ion-col size="12" class="center-content">
-                        <img src="assets/undraw_transfer-money_h9s3.svg" alt="Ilustración de movimientos vacíos" class="empty-image">
-                  </ion-col>
-            </ion-row>
-
-      </ion-grid>
+            <ion-grid>
+      
+                  
+                  <ion-row class="text-row">
+                        <ion-col size="12" class="center-content">
+                              <p class="empty-text">
+                                    ¿Aún no tienes movimientos registrados? Empieza agregando tus ingresos o gastos.
+                              </p>
+                        </ion-col>
+                  </ion-row>
+      
+                  <ion-row class="image-row">
+                        <ion-col size="12" class="center-content">
+                              <img src="assets/undraw_transfer-money_h9s3.svg" alt="Ilustración de movimientos vacíos" class="empty-image">
+                        </ion-col>
+                  </ion-row>
+      
+            </ion-grid>
+      } @else {
+            <app-card-movements [movements]="movimientos"/>
+      }
 </ion-content>
