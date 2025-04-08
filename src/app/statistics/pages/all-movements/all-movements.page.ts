@@ -8,7 +8,7 @@ import { CardMovementsPage } from "../../../finance/components/card-movements/ca
   selector: 'app-all-movements',
   templateUrl: './all-movements.page.html',
   styleUrls: ['./all-movements.page.scss'],
-  imports: [IonContent, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonCol, IonRow, IonToolbar, IonGrid, CardMovementsPage],
+  imports: [ IonGrid, CardMovementsPage],
   standalone: true,
 })
 export class AllMovementsPage implements AfterViewInit, OnInit {

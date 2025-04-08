@@ -1,1 +1,32 @@
-<h1>income</h1>
+<!-- @if (data.length <= 0) { 
+    <ion-grid class="empty-grid">
+      <ion-row class="empty-page" justify-content-center align-items-center>
+        <ion-col size="12" class="text-center">
+          <p class="subtitle text-empty-page">
+            ¿Aún no tienes movimientos registrados? Empieza agregando tus ingresos o gastos.
+          </p>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row class="empty-page" justify-content-center align-items-center>
+        <ion-col size="12" class="text-center">
+          <img src="assets/undraw_financial-data_r0vs.svg" alt="Sin movimientos" class="img" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  }@else { 
+  
+    <canvas #myCanvas></canvas>
+    
+        <ion-row class="title-movements justify-between">
+          <ion-col size="auto">Movimientos</ion-col>
+          <ion-col size="auto" class="subtitle">filtros</ion-col>
+        </ion-row>
+       <ion-row>
+        @for (item of data; track $index) {
+          <app-card-movements [movements]="item"/>
+        }
+       </ion-row>
+  } 
+    -->

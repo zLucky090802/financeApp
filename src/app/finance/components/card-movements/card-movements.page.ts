@@ -15,7 +15,7 @@ export class CardMovementsPage implements OnInit {
   constructor() { }
 
   @Input()
-  public movements = [];
+  public movements:any = [];
   ngOnInit() {
   }
 
