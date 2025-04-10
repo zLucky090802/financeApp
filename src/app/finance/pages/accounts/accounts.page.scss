@@ -1,0 +1,107 @@
+.safe-area {
+    margin-top: env(--ion-safe-area-top, 20px);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.no-shadow {
+    --border-width: 0px;
+    /* Elimina la sombra por defecto */
+    margin-top: env(--ion-safe-area-top, 20px);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente */
+    justify-content: space-between;
+    /* Distribuye los elementos */
+    padding: 10px;
+}
+
+.profile-pic-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* Asegura que la imagen esté centrada */
+}
+
+ion-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+ion-toolbar.no-shadow {
+    --background: transparent;
+    --box-shadow: none;
+    --border-width: 0;
+    padding: 0;
+}
+
+ion-col p {
+    text-align: center;
+    margin: 0;
+}
+
+.border-account {
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 0;
+}
+
+ion-col {
+    padding: 10px;
+}
+
+.red {
+    color: var(--ion-expense-color);
+}
+
+.green {
+    color: var(--ion-earnings-color);
+}
+
+.responsive-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px; // opcional
+    display: block;
+}
+
+
+
+.responsive-text {
+    color: var(--ion-subtitle-color);
+    font-weight: 500; // medium
+    font-size: clamp(14px, 4vw, 16px);
+    width: 70vw;
+}
+
+.wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+.img-wrapper{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+.subtitle{
+    display: flex;
+    color: var(--ion-subtitle-color);
+    font-weight: 500; // Medium
+    font-size: clamp(12px, 3vw, 14px);
+    text-align: left;
+    width: 90%;
+    
+}

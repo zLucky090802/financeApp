@@ -1,7 +1,74 @@
+<ion-header fullscreen="true" class="safe-area">
 
-    
- 
+      <ion-toolbar class="no-shadow">
+            <ion-grid>
+                  <ion-row class="header-content">
+                        <ion-col size="8">
 
+                              <h2 class="username primary-title">Cuentas</h2>
+                        </ion-col>
+                        <ion-col size="4" class="profile-pic-container">
+                              <ion-avatar>
+                                    <img src="assets/Imagen de WhatsApp 2025-03-12 a las 12.43.27_0f5a38fb.jpg"
+                                          alt="Foto de perfil">
+                              </ion-avatar>
+                        </ion-col>
+                  </ion-row>
+            </ion-grid>
+      </ion-toolbar>
 
-      <ion-title size="large">accounts</ion-title>
-  
+      <ion-grid  class="border-account">
+            <ion-row>
+                  <ion-col size="4">
+                        <p>Capital</p>
+                        <p class="green">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+                  </ion-col>
+                  <ion-col size="4">
+                        <p>A deber</p>
+                        <p class="red">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+                  </ion-col>
+                  <ion-col size="4">
+                        <p>Balance</p>
+                        <p>{{0 | currency:'USD':'symbol':'1.2-2' }}</p>
+                  </ion-col>
+            </ion-row>
+      </ion-grid>
+</ion-header>      
+<ion-content>
+      @if (data.length <= 0) {
+
+            <ion-grid class="wrapper">
+                  <ion-row>
+                        <ion-col size="12">
+                              <p class="responsive-text">Aún no tienes cuentas registradas. ¡Empieza agregando una nueva!</p>
+                        </ion-col>
+                        
+                  </ion-row>
+                  <ion-row class="img-wrapper">
+                        <ion-col size="7">
+                              <img src="assets/undraw_credit-card-payments_y0vn (1).svg" alt="" class="responsive-img">
+                        </ion-col>
+                  </ion-row>
+            </ion-grid>
+      }@else {
+
+            <ion-grid >
+                 
+                  <ion-row>
+                        <ion-col size="12" >
+                              <p class="subtitle">texto cuenta</p>
+                              
+                        </ion-col>
+                        
+                  </ion-row>
+                  <ion-row>
+                        @for (item of data; track $index) {
+                  
+                              <app-card-movements/>
+                        }
+                  </ion-row>
+            </ion-grid>
+      }
+
+</ion-content>
+

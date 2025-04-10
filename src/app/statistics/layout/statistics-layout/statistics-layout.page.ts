@@ -10,7 +10,7 @@ import { BottomBarPage } from "../../../shared/components/bottom-bar/bottom-bar.
   templateUrl: './statistics-layout.page.html',
   styleUrls: ['./statistics-layout.page.scss'],
   standalone: true,
-  imports: [IonAvatar, IonGrid, IonRow, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterModule, IonRouterOutlet, BottomBarPage]
+  imports: [IonAvatar, IonGrid, IonRow, IonCol, IonContent, IonHeader, IonToolbar, CommonModule, FormsModule, RouterModule, IonRouterOutlet, BottomBarPage]
 })
 export class StatisticsLayoutPage implements OnInit {
 

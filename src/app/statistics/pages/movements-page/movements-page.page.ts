@@ -29,9 +29,6 @@ import { CardMovementsPage } from '../../../finance/components/card-movements/ca
     FormsModule,
     CardMovementsPage,
     IonContent,
-    IonHeader,
-    IonToolbar,
-    IonTitle
   ],
 })
 export class MovementsPagePage implements OnInit {
