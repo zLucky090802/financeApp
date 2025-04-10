@@ -9,7 +9,12 @@
     width: 90vw;
 
 }
-
+.income-amount{
+  color: var(--ion-earnings-color);
+}
+.expense-amount{
+  color: var(--ion-expense-color);
+}
 
 .primary-title{
     color: var(--ion-title-color);

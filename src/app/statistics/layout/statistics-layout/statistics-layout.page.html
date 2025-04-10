@@ -1,4 +1,5 @@
-<ion-content fullscreen="true" class="safe-area">
+<ion-header fullscreen="true" class="safe-area">
+  
   <ion-toolbar class="no-shadow">
     <ion-grid>
           <ion-row class="header-content">
@@ -34,11 +35,12 @@
     </ion-col>
   </ion-row>
 
-  <ion-row>
-    <ion-col size="12">
-
+  
+</ion-header>
+<ion-content  class="safe-area">
+  
+  
       <ion-router-outlet></ion-router-outlet>
-    </ion-col>
-  </ion-row>
+   
 </ion-content>
 <app-bottom-bar />

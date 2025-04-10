@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center; // opcional, para centrar verticalmente
     padding: 0 16px; // opcional, para espaciado lateral
-    
+    margin-bottom: 20px;
   }
   
   canvas{
@@ -39,6 +39,41 @@
   
   
   
+  .graph-container {
+  // Menos espacio arriba
+    margin-bottom: 1rem;
+  
+    canvas {
+      width: 80%;
+      height: 25vh !important; // Altura fija del canvas
+      max-width: 100%;
+      display: block;
+    }
+  }
+  .scroll-wrapper {
+    
+    overflow-y: auto;
+  
+  
+  }
+
+  .scroll-content {
+    --padding-top: 0;
+    --padding-bottom: 0;
+    overflow-y: auto;
+  }
+  
+  .img {
+    width: 180px;
+    max-width: 80%;
+    margin-top: 20px;
+  }
+  
+  .scrollable-movements {
+    height: 65vh;
+    overflow-y: auto;
+    padding-bottom: 16px;
+  }
   
   
   .subtitle{

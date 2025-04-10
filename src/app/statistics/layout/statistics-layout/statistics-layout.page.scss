@@ -1,5 +1,13 @@
 .safe-area{
     margin-top: env(--ion-safe-area-top, 20px);
+    padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+ion-toolbar.no-shadow {
+  --background: transparent;
+  --box-shadow: none;
+  --border-width: 0;
+  padding: 0;
 }
 
 .menu-item{
