@@ -1,0 +1,28 @@
+/* auth-layout.component.scss */
+
+/* Apunta al host para que ion-content sea flex */
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* ocupa toda la ventana */
+  }
+  
+  /* Ahora ion-content dentro del host */
+  .auth-container {
+    flex: 1;                  /* ocupa todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* centrar verticalmente */
+    align-items: center;      /* centrar horizontalmente */
+    text-align: center;
+    padding: 0 16px;
+  }
+  
+  /* Opcional: ajustar icono */
+  .paid-icon {
+    font-size: 65px;
+   
+  }
+
+  
+  

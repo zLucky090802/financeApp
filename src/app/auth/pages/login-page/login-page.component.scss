@@ -1,0 +1,64 @@
+.login-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+
+
+.login-button {
+    --background: #1a1a1a;
+    --color: #ffffff;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.fab-button {
+    font-size: 36px;
+    color: #1a1a1a;
+}
+
+.subtitle{ 
+    text-align: right;
+    font-weight: 300;
+    padding-right: 5px;
+    color: var(--ion-subtitle-color);
+}
+
+ion-footer ion-toolbar {
+    padding: 0;
+    height: 56px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+
+
+ion-input {
+    background-color: #e7e7e7;
+    text-align: left;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+    --padding-end: 10px;
+    --padding-start: 10px;
+
+
+}
+
+form p {
+    font-weight: 600;
+    text-align: right;
+}
