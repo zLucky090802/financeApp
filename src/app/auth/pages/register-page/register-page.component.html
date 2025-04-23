@@ -8,15 +8,37 @@
   <ion-col size="10">
 
 
-    <form class="">
+    <form [formGroup]="form" (ngSubmit)="onRegister()">
 
 
 
-      <ion-input label="Nombre" label-placement="floating" fill="solid" autocomplete="off" autocorrect="off"
-        autocapitalize="none" spellcheck="false"></ion-input>
-      <ion-input label="Email" label-placement="floating" fill="solid" autocomplete="off" autocorrect="off"
-        autocapitalize="none" spellcheck="false"></ion-input>
-      <ion-input label="Password" type="password" label-placement="floating" fill="solid"></ion-input>
+      <ion-input 
+      label="Nombre" 
+      label-placement="floating" 
+      fill="solid" 
+      autocomplete="off" 
+      autocorrect="off"
+      autocapitalize="none" 
+      spellcheck="false"
+      formControlName="nombre"
+      ></ion-input>
+      <ion-input 
+      label="Email" 
+      label-placement="floating"
+      fill="solid" 
+      autocomplete="off" 
+      autocorrect="off"
+      autocapitalize="none" 
+      spellcheck="false"
+      formControlName="email"
+      ></ion-input>
+      <ion-input 
+      label="Password" 
+      type="password" 
+      label-placement="floating" 
+      fill="solid"
+      formControlName="password"
+      ></ion-input>
 
 
 

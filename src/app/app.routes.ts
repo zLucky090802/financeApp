@@ -19,6 +19,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'finance',
+    redirectTo: 'auth',
+    pathMatch: 'full'
   },
 ];
