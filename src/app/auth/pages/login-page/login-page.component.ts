@@ -62,7 +62,7 @@ export class LoginPageComponent  implements OnInit {
         })
       ).subscribe(action => {
         this.store.dispatch(action);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/finance/home']);
       }, error => {
         this.store.dispatch(loginFailure({ error: error.error.message }));
       });

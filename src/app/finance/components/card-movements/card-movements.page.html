@@ -2,12 +2,12 @@
   <ion-row class="card-movements">
         
         <ion-col size="8" class="align-left">
-              <p class="title primary-title">{{movements.titulo}} </p>
+              <p class="title primary-title">{{movements.descripcion}} </p>
               <p class="date subtitle">{{movements.fecha}}</p>
               
         </ion-col>
         <ion-col size="4" class="align-center "><p  [ngClass]="{
-            'income-amount': movements.tipo === 'income',
-            'expense-amount': movements.tipo === 'expense'
+            'income-amount': movements.tipo === 'ingreso',
+            'expense-amount': movements.tipo === 'gasto'
           }">{{movements.monto | currency:'USD':'symbol':'1.2-2'  }}</p></ion-col>
   </ion-row>

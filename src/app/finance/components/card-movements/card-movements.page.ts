@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/angular/standalone';
+import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 
 @Component({
   selector: 'app-card-movements',
@@ -15,7 +16,7 @@ export class CardMovementsPage implements OnInit {
   constructor() { }
 
   @Input()
-  public movements:any = [];
+  public movements!:Transaccion ;
   ngOnInit() {
   }
 

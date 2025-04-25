@@ -4,7 +4,7 @@
                   <ion-row class="header-content">
                         <ion-col size="8">
                               <p class="greeting">Hola,</p>
-                              <h2 class="username primary-title">Daniel Espitia</h2>
+                              <h2 class="username primary-title">{{user.nombre}}</h2>
                         </ion-col>
                         <ion-col size="4" class="profile-pic-container">
                               <ion-avatar>
@@ -23,7 +23,7 @@
 
                         <ion-row class="fila-interna">
                               <ion-col size="12" class="alineado title-medium primary-title">
-                                    <p>$0</p>
+                                    <p>{{balance | currency:'USD':'symbol':'1.2-2' }}</p>
                               </ion-col>
                         </ion-row>
                         <ion-row class="fila-interna">
@@ -40,11 +40,11 @@
                         <p>Reciente</p>
                   </ion-col>
                   <ion-col size="4" class="alineado-derecha subtitle">
-                        <p>Ver todos</p>
+                        <p routerLink="/finance/statistics" routerLinkActive="router-link-active" >Ver todos</p>
                   </ion-col>
             </ion-row>
       </ion-grid>
-      @if (movimientos.length <= 0) {
+      @if (movements.transacciones.length <= 0) {
 
             <ion-grid>
       
@@ -65,6 +65,9 @@
       
             </ion-grid>
       } @else {
-            <app-card-movements [movements]="movimientos"/>
+            @for (movement of movements.transacciones; track $index) {
+
+                  <app-card-movements [movements]="movement"/>
+            }
       }
 </ion-content>

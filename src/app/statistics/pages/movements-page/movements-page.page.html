@@ -1,7 +1,7 @@
 <ion-content>
 </ion-content>
 
-@if (data.length <= 0) { <ion-grid class="empty-grid">
+@if (movements.transacciones.length === 0) { <ion-grid class="empty-grid">
   <ion-row class="empty-page" justify-content-center align-items-center>
     <ion-col size="12" class="text-center">
       <p class="subtitle text-empty-page">
@@ -37,7 +37,7 @@
     <ion-grid >
       
       <ion-row >
-        @for (item of data; track $index) {
+        @for (item of getFilteredMovements(); track $index) {
         <app-card-movements [movements]="item" />
         }
       </ion-row>

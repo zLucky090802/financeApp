@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import {
   IonContent,
   IonHeader,
@@ -11,10 +10,15 @@ import {
   IonCol,
   IonGrid,
 } from '@ionic/angular/standalone';
-import { routes } from 'src/app/app.routes';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import { CardMovementsPage } from '../../../finance/components/card-movements/card-movements.page';
+import { User } from 'src/app/auth/interfaces/user.interface';
+import { selectUser } from 'src/app/store/auth/auth.selector';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { MovementsService } from 'src/app/shared/services/movements.service';
+import { TransaccionesResponse } from '../../interfaces/TransacionesResponse.interface';
 
 @Component({
   selector: 'app-movements-page',
@@ -33,100 +37,71 @@ import { CardMovementsPage } from '../../../finance/components/card-movements/ca
 })
 export class MovementsPagePage implements OnInit {
   filter: String = 'all';
-  allData = [
-    {
-      titulo: 'Pago de Proyecto Web',
-      fecha: '2025-04-08',
-      tipo: 'income',
-      descripcion: 'Pago recibido por desarrollo de sitio web para cliente XYZ',
-      monto: 1200,
-    },
-    {
-      titulo: 'Almuerzo con amigos',
-      fecha: '2025-04-07',
-      tipo: 'expense',
-      descripcion: 'Comida en restaurante italiano',
-      monto: -45,
-    },
-    {
-      titulo: 'Sueldo mensual',
-      fecha: '2025-04-05',
-      tipo: 'income',
-      descripcion: 'Salario correspondiente a abril',
-      monto: 2000,
-    },
-    {
-      titulo: 'Gasolina',
-      fecha: '2025-04-04',
-      tipo: 'expense',
-      descripcion: 'Carga de gasolina al auto',
-      monto: -60,
-    },
-    {
-      titulo: 'Venta de bicicleta',
-      fecha: '2025-04-02',
-      tipo: 'income',
-      descripcion: 'Venta de bicicleta usada por Marketplace',
-      monto: 300,
-    },
-    {
-      titulo: 'Supermercado',
-      fecha: '2025-04-01',
-      tipo: 'expense',
-      descripcion: 'Compra de víveres para la semana',
-      monto: -120,
-    },
-  ];
-
-  data: any = [];
-
-  constructor(private route: ActivatedRoute) {
-    Chart.register(...registerables);
-  }
-
-  ionViewDidEnter() {}
+  movements: TransaccionesResponse = { transacciones: [] };
+  user!: User;
+  user$!: Observable<any>;
 
   @ViewChild('myCanvas', { static: false }) canvasRef!: ElementRef;
   ctx: any = '';
 
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store,
+    private movementsService: MovementsService
+  ) {
+    Chart.register(...registerables);
+  }
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const raw = params['filter'];
-      this.filter = ['all', 'income', 'expenses'].includes(raw) ? raw : 'all';
-      console.log(this.filter);
+      this.filter = ['all', 'ingreso', 'gasto'].includes(raw) ? raw : 'all';
+    });
+
+    this.user$ = this.store.select(selectUser);
+    this.user$.subscribe((user) => {
+      this.user = user;
+      this.getMovements();
     });
   }
+
   ngAfterViewInit() {
-    // 🧩 Accedemos al contenedor del canvas
-    setTimeout(() => {
-      if (this.data.length > 0) {
-        this.cargarCanvas();
-      }
-    }, 300);
-    this.filtrarDatos();
+    // El canvas se carga tras obtener movimientos y cuando se renderiza
+    // Lo controlamos con setTimeout en getMovements()
   }
 
-  filtrarDatos() {
-    if (this.filter === 'income') {
-      this.data = this.allData.filter((m) => m.tipo === 'income');
-    } else if (this.filter === 'expenses') {
-      this.data = this.allData.filter((m) => m.tipo === 'expense');
+  getMovements() {
+    this.movementsService.getMovementsByUser(this.user.id!).subscribe((movements) => {
+      this.movements = movements;
+
+      // Esperar al render del canvas antes de cargar el gráfico
+      setTimeout(() => {
+        if (this.canvasRef && this.canvasRef.nativeElement) {
+          this.cargarCanvas();
+        } else {
+          console.warn('Canvas aún no está disponible');
+        }
+      }, 300);
+    });
+  }
+
+  getFilteredMovements() {
+    if (this.filter === 'ingreso') {
+      return this.movements.transacciones.filter((m) => m.tipo === 'ingreso');
+    } else if (this.filter === 'gasto') {
+      return this.movements.transacciones.filter((m) => m.tipo === 'gasto');
     } else {
-      this.data = [...this.allData];
+      return this.movements.transacciones;
     }
   }
 
   cargarCanvas() {
-    const canvasEl = this.canvasRef!.nativeElement as HTMLCanvasElement;
-    const parent = canvasEl.parentNode as HTMLElement;
+    if (!this.canvasRef || !this.canvasRef.nativeElement) {
+      console.warn('Canvas aún no disponible');
+      return;
+    }
 
-    // ✅ Establecer tamaño
-    // parent.style.height = '25vh';
-    // parent.style.width = '100%';
-    // parent.style.display = 'flex';
-    // parent.style.justifyContent = 'center';
-    // parent.style.alignItems = 'center';
-
+    const canvasEl = this.canvasRef.nativeElement as HTMLCanvasElement;
     this.ctx = canvasEl.getContext('2d');
 
     if (!this.ctx) {
@@ -163,22 +138,26 @@ export class MovementsPagePage implements OnInit {
       },
     });
   }
+
   getChartDataFromMovements() {
+    const filtered = this.getFilteredMovements();
     const labels: string[] = [];
     const data: number[] = [];
 
-    this.data.forEach((item: any) => {
-      labels.push(item.titulo);
-      data.push(Math.abs(item.monto));
+    filtered.forEach((item) => {
+      
+      labels.push(item.descripcion);
+      data.push(Math.abs(Number(item.monto)));
     });
-
-    const backgroundColors = this.generateColors(this.data.length);
+    
+    console.log(labels)
+    const backgroundColors = this.generateColors(filtered.length);
 
     return { labels, data, backgroundColors };
   }
 
   generateColors(count: number): string[] {
-    const colors: string[] = ['#FE6B62']; // Siempre empieza con este
+    const colors: string[] = ['#FE6B62'];
 
     while (colors.length < count) {
       const randomColor =
@@ -187,7 +166,6 @@ export class MovementsPagePage implements OnInit {
           .toString(16)
           .padStart(6, '0');
 
-      // Asegúrate de que no se repita
       if (!colors.includes(randomColor)) {
         colors.push(randomColor);
       }

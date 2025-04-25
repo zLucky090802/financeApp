@@ -57,7 +57,7 @@ export class RegisterPageComponent  implements OnInit {
   
 
   onRegister(){
-    let msg = ''
+    
     if(this.form.valid){
       const user: User = {
         email: this.form.value.email,
