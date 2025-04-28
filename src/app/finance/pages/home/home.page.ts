@@ -19,6 +19,7 @@ import { selectUser } from 'src/app/store/auth/auth.selector';
 import { User } from 'src/app/auth/interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,7 @@ import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface
     CommonModule,
     FormsModule,
     CardMovementsPage,
+    RouterLink
   ],
 })
 export class HomePage implements OnInit {

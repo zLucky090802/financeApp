@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 export const financeRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('./layout/layout-pages/layout-pages.page').then(m => m.LayoutPagesPage),
+    canActivate:[AuthGuard],
+    
     children: [
       {
         path: 'home',

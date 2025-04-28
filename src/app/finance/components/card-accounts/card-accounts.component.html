@@ -1,0 +1,15 @@
+<ion-row class="card-movements">
+  <ion-col size="8" class="align-left">
+    <p class="title primary-title">{{ data.nombre }} </p>
+  </ion-col>
+  
+  <ion-col size="4" class="align-center">
+    <p [ngClass]="{
+      'income-amount': balance >= 0,
+      'expense-amount': balance < 0
+    }">
+      {{ balance | currency:'USD':'symbol':'1.2-2' }}
+    </p>
+  </ion-col>
+</ion-row>
+

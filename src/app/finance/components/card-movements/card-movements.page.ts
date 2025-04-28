@@ -16,7 +16,7 @@ export class CardMovementsPage implements OnInit {
   constructor() { }
 
   @Input()
-  public movements!:Transaccion ;
+  public movements!:Transaccion;
   ngOnInit() {
   }
 
