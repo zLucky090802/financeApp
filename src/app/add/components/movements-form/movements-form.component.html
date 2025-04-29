@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <form >
+  <form [formGroup]="form"  (ngSubmit)="onSubmit()">
     <ion-item>
       <!-- <ion-label position="floating">Tipo</ion-label> -->
       <ion-select formControlName="tipo" interface="popover" placeholder="Tipo">
@@ -17,18 +17,18 @@
     <ion-item>
       <!-- <ion-label position="floating">Cuenta</ion-label> -->
       <ion-select formControlName="cuenta_id" placeholder="Cuenta">
-        <!-- <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
+        <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
           {{ cuenta.nombre }}
-        </ion-select-option> -->
+        </ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       
       <ion-select formControlName="categoria_id" placeholder="Categoria">
-        <!-- <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+        <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
           {{ categoria.nombre }}
-        </ion-select-option> -->
+        </ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -39,7 +39,7 @@
 
     <ion-item>
      
-      <ion-textarea formControlName="descripcion" placeholder="Descripcion"></ion-textarea>
+      <ion-textarea formControlName="descripcion" placeholder="Titulo transaccion"></ion-textarea>
     </ion-item>
 
     <!-- <ion-item>
