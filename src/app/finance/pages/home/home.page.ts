@@ -17,9 +17,10 @@ import { TransaccionesResponse } from 'src/app/statistics/interfaces/Transacione
 import { Store } from '@ngrx/store';
 import { selectUser } from 'src/app/store/auth/auth.selector';
 import { User } from 'src/app/auth/interfaces/user.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 import { RouterLink } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -39,11 +40,11 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit,ViewWillEnter {
   user$!: Observable<any>;
   user!: User;
   movements: TransaccionesResponse = { transacciones: [] };
-  balance: number = 0;
+  balance$ = new BehaviorSubject<number>(0); 
 
   constructor(
     private movementsService: MovementsService,
@@ -54,12 +55,17 @@ export class HomePage implements OnInit {
       this.user = user;
 
       // Solo llamas al servicio cuando ya tienes el usuario
-      this.loadMovements();
+      // this.loadMovements();
     });
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    // Esto se ejecuta cada vez que entras a la vista
     this.getBalance();
+    this.loadMovements();
+  }
+  ngOnInit() {
+    // this.getBalance();
   }
 
   loadMovements() {
@@ -74,7 +80,7 @@ export class HomePage implements OnInit {
 
   getBalance() {
     this.movementsService.getBalance(this.user.id!).subscribe((res) => {
-      this.balance = res.balance;
+      this.balance$.next(res.balance)
     });
   }
 }
