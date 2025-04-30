@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <ion-item>
     
@@ -14,9 +14,9 @@
 
     <ion-item>
       
-      <ion-select formControlName="tipo" placeholder="Tipo" >
-        <ion-select-option *ngFor="let tipo of tiposDeCuentas" [value]="tipo">
-          {{ tipo }}
+      <ion-select formControlName="tipo" placeholder="Tipo" (ionChange)="onTipoChange($event)">
+        <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta.tipo">
+          {{ cuenta.nombre }}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -25,7 +25,7 @@
 
     <ion-item>
       
-      <ion-input type="number" formControlName="saldo_inicial" placeholder="Saldo inicial"></ion-input>
+      <ion-input type="number" formControlName="saldo" placeholder="Saldo inicial"></ion-input>
     </ion-item>
 
     <ion-button expand="block" type="submit" >

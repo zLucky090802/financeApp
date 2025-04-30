@@ -80,9 +80,10 @@ export class AccountsPage implements OnInit {
         const cuentasConNombreBase = this.accounts.map((cuenta: AccountResponse, index: number) => ({
           ...cuenta,
           nombreCuentaBase: cuentasBase[index].nombre,
-          balance$: this.getBalanceCuentaPersonalizada(this.user.id!, cuenta.id)
+          balance$: this.getBalanceCuentaPersonalizada(this.user.id!, cuenta.id!)
         }));
-  
+        
+        console.log(cuentasConNombreBase)
         
         this.data = cuentasConNombreBase;
 

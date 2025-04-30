@@ -12,8 +12,8 @@ export class AccountsService {
         private http: HttpClient
     ) { }
     
-    getCuentasPredeterminadas(){
-      return this.http.get(`${this.baseUrl}/predeterminadas`);
+    getCuentasPredeterminadas():Observable<AccountResponse []>{
+      return this.http.get<AccountResponse[]>(`${this.baseUrl}/predeterminadas`);
     }
     getCuentasPersonalizadas(id:number):Observable<AccountResponse []>{
       return this.http.get<AccountResponse []>(`${this.baseUrl}/personalizadas/${id}`);
@@ -21,7 +21,7 @@ export class AccountsService {
     getCuentaById(id:number):Observable<AccountResponse>{
       return this.http.get<AccountResponse>(`${this.baseUrl}/${id}`);
     }
-    crearCuenta(account:any){
+    crearCuenta(account:AccountResponse){
       return this.http.post(`${this.baseUrl}`, account);
     }
     actualizarCuenta(id:number, account:any){
