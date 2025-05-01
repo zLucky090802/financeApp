@@ -65,7 +65,7 @@
                        <ion-row>
                         <ng-container *ngIf="cuenta.balance$ | async as balanceCuenta">
 
-                              <app-card-accounts [data]="cuenta"  [balance]="balanceCuenta.balance" />
+                              <app-card-accounts [data]="cuenta"  [balance]="balanceCuenta.balanceTotal" />
                         </ng-container>
                     
 
