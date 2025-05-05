@@ -1,9 +1,103 @@
 ion-card {
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  max-width: 21.875rem; // 350px
+  min-width: 18.75rem; // 300px
+  width: 90%;
+  margin: 0 auto;
+}
+
+ion-card:hover {
+  transform: scale(1.02);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3.125rem; // 50px
+  margin-top: 1.25rem; // 20px
+  text-align: left;
+
+  h2 {
+    font-size: 1.75rem; // 28px
+    color: #2c3e50;
+    margin-bottom: 0.5rem; // 8px
+    font-weight: bold;
+    width: 80%;
+    text-align: left;
   }
-  
-  ion-card:hover {
-    transform: scale(1.02);
+
+  p {
+    color: #7f8c8d;
+    font-size: 1rem; // 16px
+    width: 80%;
+    text-align: left;
   }
-  
+}
+
+.action-card {
+  border-radius: 0.75rem; // 12px
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 100%;
+    min-height: 10.9375rem; // 175px
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem; // 24px
+      color: black;
+      font-weight: 600;
+      margin-bottom: 0.3125rem; // 5px
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.8125rem; // 13px
+      color: #34495e;
+    }
+
+    .icon {
+      font-size: 2.5rem; // 40px
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+}
+
+.ingreso {
+  background-color: #d6f5ff;
+  color: #1abc9c;
+}
+
+.cuenta {
+  background-color: #e8ffe8;
+  color: #27ae60;
+}
+
+@media (max-width: 375px) {
+  ion-card {
+    width: 95%;
+    min-width: unset;
+  }
+
+  .card-content {
+    flex-direction: column;
+    align-items: flex-start;
+
+    svg {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+}
+
