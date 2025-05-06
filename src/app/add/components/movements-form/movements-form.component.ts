@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonContent, IonItem, IonLabel, IonInput, IonTextarea, IonDatetime, IonButton, IonSelect, IonSelectOption, IonTitle } from "@ionic/angular/standalone";
+import { IonicModule} from "@ionic/angular";
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/auth/interfaces/user.interface';
@@ -20,7 +20,7 @@ import { AlertController } from '@ionic/angular';
   selector: 'app-movements-form',
   templateUrl: './movements-form.component.html',
   styleUrls: ['./movements-form.component.scss'],
-  imports:[IonHeader, IonToolbar, IonContent, IonItem, IonLabel, IonInput, IonTextarea, IonDatetime, IonButton, IonSelect, IonSelectOption, IonTitle, CommonModule, ReactiveFormsModule]
+  imports:[IonicModule, ReactiveFormsModule]
 })
 export class MovementsFormComponent  implements OnInit {
   user$!: Observable<any>;

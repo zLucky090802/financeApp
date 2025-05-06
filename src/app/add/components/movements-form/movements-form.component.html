@@ -1,54 +1,132 @@
-<ion-header>
-  <ion-toolbar>
+<!-- <ion-header> -->
+<!-- <ion-toolbar>
     <ion-title>Agregar Transacción</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-    <ion-item>
-      <!-- <ion-label position="floating">Tipo</ion-label> -->
-      <ion-select formControlName="tipo" interface="popover" placeholder="Tipo">
+  <!-- <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+    <ion-item> -->
+<!-- <ion-label position="floating">Tipo</ion-label> -->
+<!-- <ion-select formControlName="tipo" interface="popover" placeholder="Tipo">
         <ion-select-option value="ingreso">Ingreso</ion-select-option>
         <ion-select-option value="gasto">Gasto</ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-item>
+<!-- <ion-item>
       <!-- <ion-label position="floating">Cuenta</ion-label> -->
-      <ion-select formControlName="cuenta_id" placeholder="Cuenta">
+<!-- <ion-select formControlName="cuenta_id" placeholder="Cuenta">
         <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
           {{ cuenta.nombre }}
         </ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item>  -->
 
-    <ion-item>
+<!-- <ion-item>
       
       <ion-select formControlName="categoria_id" placeholder="Categoria">
         <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
           {{ categoria.nombre }}
         </ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-item>
+<!-- <ion-item>
       
       <ion-input formControlName="monto" type="number" inputmode="decimal" placeholder="Monto"></ion-input>
     </ion-item>
 
-    <ion-item>
-     
-      <ion-textarea formControlName="descripcion" placeholder="Titulo transaccion"></ion-textarea>
-    </ion-item>
+    <ion-item> -->
 
-    <!-- <ion-item>
+<!-- <ion-textarea formControlName="descripcion" placeholder="Titulo transaccion"></ion-textarea>
+    </ion-item> -->
+
+<!-- <ion-item>
       <ion-label position="floating">Fecha</ion-label>
       <ion-datetime display-format="DD/MM/YYYY" formControlName="fecha"></ion-datetime>
     </ion-item> -->
 
-    <ion-button expand="full" type="submit"  class="button">
+<!-- <ion-button expand="full" type="submit"  class="button">
       Guardar Transacción
     </ion-button>
-  </form>
+  </form> -->
+<ion-content>
+  <ion-row id="title">
+   
+      <h1>Nueva transacción</h1>
+
+    
+  </ion-row>
+  <ion-row class="container">
+    <ion-col size="10">
+
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+
+        <ion-input label="Titulo" label-placement="floating" fill="solid" autocomplete="off" autocorrect="off"
+          autocapitalize="none" spellcheck="false" formControlName="titulo"></ion-input>
+
+        <ion-row class="custom-row">
+
+          <ion-select
+      label="Tipo"
+      label-placement="floating"
+      fill="solid"
+      interface="popover"
+      formControlName="tipo"
+      class="custom-input"
+      id="tipoInput"
+    >
+      <ion-select-option value="ingreso">Ingreso</ion-select-option>
+      <ion-select-option value="gasto">Gasto</ion-select-option>
+    </ion-select>
+
+
+          <ion-select label="Categoría" label-placement="floating" fill="solid" interface="action-sheet"
+            formControlName="categoria_id" class="custom-input">
+            @for (categoria of categorias; track $index) {
+                <ion-select-option [value]="categoria.id">
+                  {{categoria.nombre}}
+                </ion-select-option>
+            }
+            <!-- <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nombre }}
+            </ion-select-option> -->
+          </ion-select>
+        </ion-row>
+
+        <ion-select label="Cuenta" label-placement="floating" fill="solid" interface="action-sheet"
+            formControlName="categoria_id" >
+            @for (cuenta of cuentas; track $index) {
+                <ion-select-option [value]="cuenta.id">
+                  {{cuenta.nombre}}
+                </ion-select-option>
+            }
+            <!-- <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nombre }}
+            </ion-select-option> -->
+          </ion-select>
+
+        <ion-input label="monto" type="password" label-placement="floating" fill="solid" formControlName="cuenta_id"
+          type="number"></ion-input>
+
+
+
+
+
+
+
+        <ion-button expand="block" type="submit" class="ion-margin-top login-button">
+          Añadir transacción
+        </ion-button>
+
+      </form>
+
+
+
+    </ion-col>
+  </ion-row>
 </ion-content>
