@@ -13,4 +13,17 @@ export class CategoriaService {
         return this.http.get<Categorias []>(`${this.baseUrl}/categorias/usuario/${id}`);
     }
 
+    createcategoria(categoria: Categorias){
+    return this.http.post(`${this.baseUrl}/categorias`,categoria);
+    }
+
+    updateCategoria(categoria: Categorias){
+        return this.http.put(`${this.baseUrl}/categorias/${categoria.id}`, categoria);
+    }
+
+    deleteCategoria(id:number){
+        return this.http.delete(`${this.baseUrl}/categorias/${id}`);
+    }
+
+
 }
