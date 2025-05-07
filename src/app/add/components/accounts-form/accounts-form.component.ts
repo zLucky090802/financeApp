@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonTitle, IonToolbar, IonHeader, IonItem, IonLabel, IonInput, IonCheckbox, IonButton, IonSelect, IonSelectOption } from "@ionic/angular/standalone";
+import { IonContent, IonTitle, IonToolbar, IonHeader, IonItem, IonLabel, IonInput, IonCheckbox, IonButton, IonSelect, IonSelectOption, IonRow, IonCol } from "@ionic/angular/standalone";
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/auth/interfaces/user.interface';
@@ -14,7 +14,7 @@ import { AlertController } from '@ionic/angular';
   selector: 'app-accounts-form',
   templateUrl: './accounts-form.component.html',
   styleUrls: ['./accounts-form.component.scss'],
-  imports:[IonContent, IonTitle, IonToolbar, IonHeader, IonItem, IonLabel,IonInput, IonCheckbox, IonButton, IonSelect, IonSelectOption, CommonModule, ReactiveFormsModule],
+  imports:[IonContent, IonTitle, IonToolbar, IonHeader, IonItem, IonLabel,IonInput, IonCheckbox, IonButton, IonSelect, IonSelectOption, CommonModule, ReactiveFormsModule, IonRow, IonCol],
 })
 export class AccountsFormComponent  implements OnInit {
 
