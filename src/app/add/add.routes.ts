@@ -19,6 +19,10 @@ export const addRoutes: Routes = [
         loadComponent: () => import('./components/accounts-form/accounts-form.component').then(m => m.AccountsFormComponent)
      },
      {
+        path: 'categorys-form',
+        loadComponent: () => import('./components/category-form/category-form.component').then(m => m.CategoryFormComponent)
+     },
+     {
         path:'options',
         loadComponent: () => import('./pages/add-page/add-page.component').then(m => m.AddPageComponent),
      },
