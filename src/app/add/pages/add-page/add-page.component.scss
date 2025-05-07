@@ -84,6 +84,15 @@ ion-card:hover {
   color: #27ae60;
 }
 
+.categoria{
+  background-color: #E5D9F2;
+  color: #8E60FF;
+}
+
+.icono-categoria path {
+  fill: #8E60FF; /* morado del ícono */
+}
+
 @media (max-width: 375px) {
   ion-card {
     width: 95%;
