@@ -6,7 +6,28 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+    <ion-input label="Nombre" label-placement="floating" fill="solid" autocomplete="off" autocorrect="off"
+    autocapitalize="none" spellcheck="false" formControlName="nombre"></ion-input>
 
+    <ion-select label="Cuenta" label-placement="floating" fill="solid" interface="action-sheet"
+    formControlName="tipo" >
+    @for (cuenta of cuentas; track $index) {
+        <ion-select-option [value]="cuenta.tipo">
+          {{cuenta.nombre}}
+        </ion-select-option>
+    }
+    <!-- <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+      {{ categoria.nombre }}
+    </ion-select-option> -->
+  </ion-select>
+
+  <ion-input label="Saldo inicial" type="password" label-placement="floating" fill="solid" formControlName="saldo"
+          type="number"></ion-input>
+
+
+
+<!-- 
     <ion-item>
     
       <ion-input formControlName="nombre" placeholder="Nombre"></ion-input>
@@ -26,7 +47,7 @@
     <ion-item>
       
       <ion-input type="number" formControlName="saldo" placeholder="Saldo inicial"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-button expand="block" type="submit" >
       Guardar Cuenta
