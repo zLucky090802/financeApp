@@ -9,7 +9,7 @@
 <ion-row class="container">
   <ion-col size="10">
 
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       
       <ion-input label="Nombre de la categoria" label-placement="floating" fill="solid" autocomplete="off" autocorrect="off"
       autocapitalize="none" spellcheck="false" formControlName="nombre"></ion-input>

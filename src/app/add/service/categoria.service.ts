@@ -14,7 +14,7 @@ export class CategoriaService {
     }
 
     createcategoria(categoria: Categorias){
-    return this.http.post(`${this.baseUrl}/categorias`,categoria);
+    return this.http.post(`${this.baseUrl}/categorias/`,categoria);
     }
 
     updateCategoria(categoria: Categorias){
