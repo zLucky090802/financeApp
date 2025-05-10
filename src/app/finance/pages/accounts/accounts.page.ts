@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -46,11 +46,30 @@ export class AccountsPage implements OnInit {
   aDeber = 0;
   balance = 0;
 
+
+
   public data: (AccountResponse & { nombreCuentaBase: string } & {balance$: Observable<BalanceCuenta>})[] = [];
 
   private user$!: Observable<any>;
   private user!: User;
   public accounts!: AccountResponse [];
+
+  @ViewChildren(CardAccountsComponent) cards!: QueryList<CardAccountsComponent>;
+
+editarActivado = false;
+
+activarEdicion() {
+  this.editarActivado = !this.editarActivado;
+
+  if (this.editarActivado) {
+    // Abrir todos los ítems
+    this.cards.forEach(card => card.open());
+  } else {
+    // Cerrar si fuera necesario
+    this.cards.forEach(card => card.slidingItem.close());
+  }
+}
+
 
   constructor(
     private accountsService: AccountsService,
@@ -67,6 +86,9 @@ export class AccountsPage implements OnInit {
     this.getCuentasPersonalizadas(this.user.id!);
     this.getmovements(this.user.id!);
   }
+
+ 
+  
 
   getCuentasPersonalizadas(id: number) {
     this.accountsService.getCuentasPersonalizadas(id).subscribe(cuentas => {
@@ -90,6 +112,12 @@ export class AccountsPage implements OnInit {
       });
     });
   }
+
+  
+  eliminarCuenta(cuenta: AccountResponse) {
+    this.data = this.data.filter(c => c.id !== cuenta.id);
+  }
+  
 
 
   getmovements(id: number) {

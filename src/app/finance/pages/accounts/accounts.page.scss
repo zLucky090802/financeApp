@@ -10,6 +10,13 @@
     margin-top: env(--ion-safe-area-top, 20px);
 }
 
+.title-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente los hijos */
+    gap: 8px; /* Opcional: espacio entre el título y el ícono */
+  }
+  
+
 .header-content {
     display: flex;
     align-items: center;

@@ -51,3 +51,41 @@
     color: black;
   }
   
+  .card-movements-wrapper {
+    position: relative;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  
+  .card-movements-wrapper.slide-left .card-movements {
+    transform: translateX(-90px);
+    transition: transform 0.3s ease;
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .card-movements {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    width: 90vw;
+    transition: transform 0.3s ease;
+  }
+  
+  .edit-icon {
+    font-size: 20px;
+    margin-left: 10px;
+    color: var(--ion-color-medium);
+    cursor: pointer;
+  }
+  
