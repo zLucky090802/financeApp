@@ -80,6 +80,7 @@
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
     width: 90vw;
     transition: transform 0.3s ease;
+    padding: 10px;
   }
   
   .edit-icon {
@@ -88,4 +89,33 @@
     color: var(--ion-color-medium);
     cursor: pointer;
   }
+  
+  .custom-item {
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+    width: 100%;
+  }
+  
+  .label-full {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .note-right {
+    margin-left: auto;
+  }
+  
+  .custom-item {
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+    --border-color: transparent; /* ← esto quita el borde */
+    width: 100%;
+  }
+  
   

@@ -58,6 +58,21 @@ export class AccountsPage implements OnInit {
 
 editarActivado = false;
 
+constructor(
+  private accountsService: AccountsService,
+  private store: Store,
+  private movementsService: MovementsService
+) {
+  this.user$ = this.store.select(selectUser);
+  this.user$.subscribe((user) => {
+    this.user = user;
+  });
+}
+
+ngOnInit() {
+  this.getCuentasPersonalizadas(this.user.id!);
+  this.getmovements(this.user.id!);
+}
 activarEdicion() {
   this.editarActivado = !this.editarActivado;
 
@@ -71,21 +86,6 @@ activarEdicion() {
 }
 
 
-  constructor(
-    private accountsService: AccountsService,
-    private store: Store,
-    private movementsService: MovementsService
-  ) {
-    this.user$ = this.store.select(selectUser);
-    this.user$.subscribe((user) => {
-      this.user = user;
-    });
-  }
-
-  ngOnInit() {
-    this.getCuentasPersonalizadas(this.user.id!);
-    this.getmovements(this.user.id!);
-  }
 
  
   

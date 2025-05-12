@@ -1,17 +1,11 @@
 <ion-item-sliding #slidingItem class="card-movements">
-  <ion-item>
-    <ion-avatar slot="start">
-      <ion-icon name="remove-circle" color="danger"></ion-icon>
-    </ion-avatar>
-
-    <ion-label>
+  <ion-item class="custom-item">
+    <ion-label class="ion-text-wrap label-full">
       <h2>{{ data.nombre }}</h2>
     </ion-label>
-
-    <ion-note slot="end" [color]="balance >= 0 ? 'primary' : 'danger'">
+    <ion-note slot="end" class="note-right" [ngClass]="balance > 0 ? 'income-amount' : 'expense-amount'">
       {{ balance | currency:'USD':'symbol':'1.0-0' }}
     </ion-note>
-
     <ion-reorder slot="end"></ion-reorder>
   </ion-item>
 
