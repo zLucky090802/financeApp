@@ -99,7 +99,7 @@
         </ion-row>
 
         <ion-select label="Cuenta" label-placement="floating" fill="solid" interface="action-sheet"
-            formControlName="categoria_id" >
+            formControlName="cuenta_id" >
             @for (cuenta of cuentas; track $index) {
                 <ion-select-option [value]="cuenta.id">
                   {{cuenta.nombre}}
@@ -110,7 +110,7 @@
             </ion-select-option> -->
           </ion-select>
 
-        <ion-input label="monto" type="password" label-placement="floating" fill="solid" formControlName="cuenta_id"
+        <ion-input label="monto" type="password" label-placement="floating" fill="solid" formControlName="monto"
           type="number"></ion-input>
 
 

@@ -118,11 +118,11 @@ activarEdicion() {
   eliminarCuenta(id:number) {
     this.data = this.data.filter(c => c.id !== id);
    
-    // this.accountsService.eliminarCuenta(id, this.user.id!).subscribe(resp=>{
-    //   console.log(resp)
-    // });
+    this.accountsService.eliminarCuenta(id, this.user.id!).subscribe(resp=>{
+      console.log(resp)
+    });
 
-    console.log(this.user.id!)
+    
   }
   
 

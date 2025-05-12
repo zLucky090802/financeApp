@@ -100,9 +100,7 @@ export class MovementsFormComponent  implements OnInit {
   
       this.movementService.createMovement(movimientoCompleto).subscribe({
         next: (res:any) => this.showSuccessAlert(),
-        error: (err) => {
-          console.error('Error al crear movimiento:', err);
-        }
+        error: (err) => this.showErrorAlert(err)
       });
     } else {
       this.form.markAllAsTouched();

@@ -71,7 +71,7 @@ export class AccountsFormComponent  implements OnInit {
       usuario_id: this.user.id!,
       nombre: formData.nombre,
       tipo: formData.tipo,
-      cuenta_base_id: Number(formData.cuenta_base_id),
+      cuenta_base_id: Number(formData.cuenta_base_id) +1,
       saldo_inicial: Number(formData.saldo),
     };
 

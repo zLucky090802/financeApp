@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -27,9 +27,12 @@ export class AccountsService {
     actualizarCuenta(id:number, account:any){
       return this.http.put(`${this.baseUrl}/${id}`, account);
     }
-    eliminarCuenta(id:number, user_id:number){
-      return this.http.delete(`${this.baseUrl}/${id}/${user_id}`);
+    eliminarCuenta(id:number, userId:number){
+      
+  
+      return this.http.delete(`${this.baseUrl}/${id}/${userId}`);
     }
+
     getBalanceCuentaPersonalizada(idUsuario: number, idCuenta:number):Observable<BalanceCuenta>{
       return this.http.get<BalanceCuenta>(`${this.baseUrl}/balance/${idUsuario}/${idCuenta}`);
     }
