@@ -29,7 +29,7 @@ export class CardAccountsComponent  implements OnInit {
   ngOnInit() {}
 
   onEliminar() {
-    this.eliminar.emit(this.data);
+    this.eliminar.emit(this.data.id);
   }
 
   open() {

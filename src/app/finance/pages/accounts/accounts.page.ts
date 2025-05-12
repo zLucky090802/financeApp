@@ -61,7 +61,8 @@ editarActivado = false;
 constructor(
   private accountsService: AccountsService,
   private store: Store,
-  private movementsService: MovementsService
+  private movementsService: MovementsService,
+
 ) {
   this.user$ = this.store.select(selectUser);
   this.user$.subscribe((user) => {
@@ -114,8 +115,14 @@ activarEdicion() {
   }
 
   
-  eliminarCuenta(cuenta: AccountResponse) {
-    this.data = this.data.filter(c => c.id !== cuenta.id);
+  eliminarCuenta(id:number) {
+    this.data = this.data.filter(c => c.id !== id);
+   
+    // this.accountsService.eliminarCuenta(id, this.user.id!).subscribe(resp=>{
+    //   console.log(resp)
+    // });
+
+    console.log(this.user.id!)
   }
   
 

@@ -27,8 +27,8 @@ export class AccountsService {
     actualizarCuenta(id:number, account:any){
       return this.http.put(`${this.baseUrl}/${id}`, account);
     }
-    eliminarCuenta(id:number){
-      return this.http.delete(`${this.baseUrl}/${id}`);
+    eliminarCuenta(id:number, user_id:number){
+      return this.http.delete(`${this.baseUrl}/${id}/${user_id}`);
     }
     getBalanceCuentaPersonalizada(idUsuario: number, idCuenta:number):Observable<BalanceCuenta>{
       return this.http.get<BalanceCuenta>(`${this.baseUrl}/balance/${idUsuario}/${idCuenta}`);
