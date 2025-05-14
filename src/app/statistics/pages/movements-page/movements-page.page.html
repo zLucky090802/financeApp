@@ -38,8 +38,8 @@
       
       <ion-row >
         @for (item of getFilteredMovements(); track $index) {
-        <app-card-movements [movements]="item" />
-        }
+          <app-card-movements [movements]="item" [routerLink]="['/add/movements-form', item.id]"/>
+          }
       </ion-row>
     </ion-grid>
   </div>

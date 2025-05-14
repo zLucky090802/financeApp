@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TransferState } from '@angular/core';
 import { IonicModule} from "@ionic/angular";
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { User } from 'src/app/auth/interfaces/user.interface';
 import { AccountsService } from 'src/app/finance/accounts.service';
 import { AccountResponse } from 'src/app/finance/interfaces/account-response.interfaces';
@@ -15,6 +15,7 @@ import { MovementForm } from '../../interfaces/movements-form.interface';
 import { Movements } from 'src/app/shared/interfaces/movements.interface';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 
 
 @Component({
@@ -40,22 +41,28 @@ export class MovementsFormComponent  implements OnInit {
     private alertController: AlertController,
     private route: ActivatedRoute
   ) {
-    this.user$ =  this.store.select(selectUser);
-    this.user$.subscribe(user=>{
-      this.user = user;
-    })
-    this.getCuentasPersonalizadas(this.user.id!);
-    this.getCategoriaByUser(this.user.id!)
+    this.user$ = this.store.select(selectUser);
+  this.user$.subscribe(user => {
+    this.user = user;
+
+    const cuentas$ = this.getCuentasPersonalizadas(user.id!);
+    const categorias$ = this.getCategoriaByUser(user.id!);
+
+    forkJoin([cuentas$, categorias$]).subscribe(([cuentas, categorias]) => {
+      this.cuentas = cuentas;
+      this.categorias = categorias;
+
+      // Ya podemos buscar el movimiento
+      const id = this.route.snapshot.paramMap.get('id');
+      if (id) {
+        this.transaccionId = +id;
+        this.getMovementById(this.transaccionId);
+      }
+    });
+  });
   }
   
   ngOnInit() {
-    this.route.paramMap.subscribe( params=>{
-      const id = params.get('id');
-      if(id){
-        this.transaccionId = +id;
-      }
-
-    })
     this.form = this.fb.group({
       tipo: ['', Validators.required],
       cuenta_id: ['', Validators.required],
@@ -63,11 +70,14 @@ export class MovementsFormComponent  implements OnInit {
       monto: [null, [Validators.required, Validators.min(0.01)]],
       descripcion: [''],
     });
+  
+    
   }
-  async showSuccessAlert() {
+  
+  async showSuccessAlert(mensaje:string) {
     const alert = await this.alertController.create({
       header: '¡Éxito!',
-      message: 'La transacción fue registrada correctamente.',
+      message: mensaje,
       buttons: ['OK']
     });
   
@@ -84,41 +94,78 @@ export class MovementsFormComponent  implements OnInit {
     await alert.present();
   }
   
-  getCuentasPersonalizadas(id:number){
-     this.accountService.getCuentasPersonalizadas(id).subscribe(cuentas=>{
-      this.cuentas = cuentas;
-      console.log(cuentas);
-     })
-   }
+  // getCuentasPersonalizadas(id:number){
+  //    this.accountService.getCuentasPersonalizadas(id).subscribe(cuentas=>{
+  //     this.cuentas = cuentas;
+  //     console.log(cuentas);
+  //    })
+  //  }
 
-   getCategoriaByUser(id:number){
-    this.categoriaService.getCuentasByUser(id).subscribe(categorias=>{
-      this.categorias = categorias;
-      console.log(this.categorias)
-    })
-   }
+  getCuentasPersonalizadas(id: number) {
+    return this.accountService.getCuentasPersonalizadas(id);
+  }
 
-   onSubmit() {
-    if (this.form.valid) {
-      const formData: MovementForm = this.form.value;
-  
-      // Armamos el objeto sin 'id' ni 'fecha', que serán gestionados por el backend
-      const movimientoCompleto: Omit<Movements, 'id' | 'fecha'> = {
-        ...formData,
-        usuario_id: this.user.id!
-      };
-  
-      this.movementService.createMovement(movimientoCompleto).subscribe({
-        next: (res:any) => this.showSuccessAlert(),
-        error: (err) => this.showErrorAlert(err)
-      });
-    } else {
+  getCategoriaByUser(id: number) {
+    return this.categoriaService.getCuentasByUser(id);
+  }
+
+  onSubmit() {
+    if (!this.form.valid) {
       this.form.markAllAsTouched();
       console.warn('Formulario inválido');
+      return;
+    }
+  
+    const formData: MovementForm = this.form.value;
+    const movimientoCompleto: Omit<Movements, 'id' | 'fecha'> = {
+      ...formData,
+      usuario_id: this.user.id!
+    };
+  
+    if (this.transaccionId) {
+      this.updateMovement(movimientoCompleto); // Asegúrate de pasar el ID aquí
+      this.showSuccessAlert('Movimiento actualizado.')
+    } else {
+      this.movementService.createMovement(movimientoCompleto).subscribe({
+        next: (res: any) => this.showSuccessAlert('Movimiento correctamente guardada.'),
+        error: (err) => this.showErrorAlert(err)
+      });
     }
   }
   
+
+  updateForm(movement:any){
+   const transaccion: Transaccion = movement.transaccion;   
+     
+     this.form.patchValue({
+       tipo: transaccion.tipo,
+       cuenta_id: transaccion.cuenta_id , // si no se encuentra, deja vacío
+       categoria_id: transaccion.categoria_id,
+       monto: transaccion.monto,
+       descripcion: transaccion.descripcion || '',
+     });
+   }
+     
+   getMovementById(id:number){
+    this.movementService.getMovementById(id).subscribe((movement)=>{
+      
+      this.updateForm(movement);
+    })
+   }
+
+   updateMovement(Movement:Movements){
+       this.movementService.updateMovement(this.transaccionId!,Movement).subscribe(resp=>{
+        console.log(resp)
+       })
+   }
+  }
+  
+  
+ 
+ 
+
+
+  
   
 
 
-}

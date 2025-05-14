@@ -10,7 +10,7 @@ import {
   IonCol,
   IonGrid,
 } from '@ionic/angular/standalone';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import { CardMovementsPage } from '../../../finance/components/card-movements/card-movements.page';
 import { User } from 'src/app/auth/interfaces/user.interface';
@@ -33,6 +33,7 @@ import { TransaccionesResponse } from '../../interfaces/TransacionesResponse.int
     FormsModule,
     CardMovementsPage,
     IonContent,
+    RouterLink
   ],
 })
 export class MovementsPagePage implements OnInit {

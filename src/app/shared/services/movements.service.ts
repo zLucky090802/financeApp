@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, TransferState } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { Movements } from '../interfaces/movements.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable, retry } from 'rxjs';
 import { TransaccionesResponse } from 'src/app/statistics/interfaces/TransacionesResponse.interface';
 import { BalanceResponse } from 'src/app/statistics/interfaces/balance-response.interface';
+import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 
 @Injectable({providedIn: 'root'})
 export class MovementsService {
@@ -27,8 +28,11 @@ export class MovementsService {
     getBalance(id:number){
         return this.http.get<BalanceResponse>(`${this.baseUrl}/balance/${id}`)
     }
-    getMovementById(id:number){
-        return this.http.get(`${this.baseUrl}/movement/${id}`)
+    getMovementById(id:number):Observable<Transaccion>{
+        return this.http.get<Transaccion>(`${this.baseUrl}/movement/${id}`)
+    }
+    updateMovement( id:number, movement:Movements){
+        return this.http.put(`${this.baseUrl}/${id}`, movement)
     }
 
 }

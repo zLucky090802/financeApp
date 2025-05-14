@@ -11,6 +11,10 @@ export const addRoutes: Routes = [
     
     children: [
      {
+        path: 'movements-form',
+        loadComponent: () => import('./components/movements-form/movements-form.component').then(m => m.MovementsFormComponent)
+     },
+     {
         path: 'movements-form/:id',
         loadComponent: () => import('./components/movements-form/movements-form.component').then(m => m.MovementsFormComponent)
      },
