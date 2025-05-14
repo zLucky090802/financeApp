@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MovementForm } from '../../interfaces/movements-form.interface';
 import { Movements } from 'src/app/shared/interfaces/movements.interface';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ import { AlertController } from '@ionic/angular';
   imports:[IonicModule, ReactiveFormsModule]
 })
 export class MovementsFormComponent  implements OnInit {
+  transaccionId: number | null = null;
   user$!: Observable<any>;
   user!: User;
   cuentas: AccountResponse [] = [];
@@ -36,6 +38,7 @@ export class MovementsFormComponent  implements OnInit {
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
     private alertController: AlertController,
+    private route: ActivatedRoute
   ) {
     this.user$ =  this.store.select(selectUser);
     this.user$.subscribe(user=>{
@@ -46,6 +49,13 @@ export class MovementsFormComponent  implements OnInit {
   }
   
   ngOnInit() {
+    this.route.paramMap.subscribe( params=>{
+      const id = params.get('id');
+      if(id){
+        this.transaccionId = +id;
+      }
+
+    })
     this.form = this.fb.group({
       tipo: ['', Validators.required],
       cuenta_id: ['', Validators.required],

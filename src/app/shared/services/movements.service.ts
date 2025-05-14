@@ -27,5 +27,8 @@ export class MovementsService {
     getBalance(id:number){
         return this.http.get<BalanceResponse>(`${this.baseUrl}/balance/${id}`)
     }
+    getMovementById(id:number){
+        return this.http.get(`${this.baseUrl}/movement/${id}`)
+    }
 
 }
