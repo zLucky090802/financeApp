@@ -4,4 +4,6 @@ export interface BalanceCuenta {
 	saldoInicial: number;
 	balanceTransacciones: number;
 	balanceTotal: number;
+	totalGastos: number;
+	totalIngresos: number;
 }

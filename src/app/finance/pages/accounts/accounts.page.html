@@ -72,7 +72,7 @@
                        <ion-row>
                         <ng-container *ngIf="cuenta.balance$ | async as balanceCuenta">
 
-                              <app-card-accounts [data]="cuenta"  [balance]="balanceCuenta.balanceTotal" (eliminar)="eliminarCuenta($event)"  [routerLink]="['/finance/account-movements/',cuenta.nombre]"  />
+                              <app-card-accounts [data]="cuenta"  [balance]="balanceCuenta.balanceTotal" (eliminar)="eliminarCuenta($event)"  [routerLink]="['/finance/account-movements/',cuenta.nombre, cuenta.id]"  />
                         </ng-container>
                     
 

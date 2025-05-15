@@ -23,15 +23,15 @@
         <ion-row>
               <ion-col size="4">
                     <p>Capital</p>
-                    <p class="green">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+                    <p class="green">{{totalIngresos | currency:'USD':'symbol':'1.2-2' }}</p>
               </ion-col>
               <ion-col size="4">
                     <p>A deber</p>
-                    <p class="red">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+                    <p class="red">{{totalGastos | currency:'USD':'symbol':'1.2-2' }}</p>
               </ion-col>
               <ion-col size="4">
                     <p>Balance</p>
-                    <p>{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+                    <p>{{balance | currency:'USD':'symbol':'1.2-2' }}</p>
               </ion-col>
         </ion-row>
   </ion-grid>
