@@ -34,5 +34,8 @@ export class MovementsService {
     updateMovement( id:number, movement:Movements){
         return this.http.put(`${this.baseUrl}/${id}`, movement)
     }
+    getMovementsByAccountName(userId:number, accountName:string){
+        return this.http.get(`${this.baseUrl}/${userId}/${accountName}`)
+    }
 
 }

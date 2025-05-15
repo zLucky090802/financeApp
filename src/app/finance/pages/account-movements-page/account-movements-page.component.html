@@ -1,3 +1,66 @@
-<p>
-  account-movements-page works!
-</p>
+<ion-header fullscreen="true" class="safe-area">
+
+  <ion-toolbar class="no-shadow">
+        <ion-grid>
+              <ion-row class="header-content">
+                    <ion-col size="12">
+                          <ion-row class="title-container">
+                                
+                                
+                                                              <h2 class="username primary-title">{{nombre | capitalize}}</h2>
+                                                              <span class="material-symbols-outlined" >
+                                                                    edit
+                                                              </span>
+                                                                  
+                          </ion-row>
+                    </ion-col>
+                    
+              </ion-row>
+        </ion-grid>
+  </ion-toolbar>
+
+  <ion-grid  class="border-account">
+        <ion-row>
+              <ion-col size="4">
+                    <p>Capital</p>
+                    <p class="green">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+              </ion-col>
+              <ion-col size="4">
+                    <p>A deber</p>
+                    <p class="red">{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+              </ion-col>
+              <ion-col size="4">
+                    <p>Balance</p>
+                    <p>{{26900 | currency:'USD':'symbol':'1.2-2' }}</p>
+              </ion-col>
+        </ion-row>
+  </ion-grid>
+</ion-header>      
+<ion-content>
+ 
+
+        <ion-grid >
+             <!-- @for (cuenta of data; track $index) {
+
+                   <ion-row>
+                         <ion-col size="12" >
+                               <p class="subtitle">{{cuenta.nombreCuentaBase}}</p>
+                               
+                         </ion-col>
+                         
+                   </ion-row>
+                   <ion-row>
+                    <ng-container *ngIf="cuenta.balance$ | async as balanceCuenta">
+
+                          <app-card-accounts [data]="cuenta"  [balance]="balanceCuenta.balanceTotal" (eliminar)="eliminarCuenta($event)"  [routerLink]="['/finance/account-movements/',cuenta.nombre]"  />
+                    </ng-container>
+                
+
+              
+                   </ion-row>
+             } -->
+        </ion-grid>
+
+
+</ion-content>
+
