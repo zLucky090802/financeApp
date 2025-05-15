@@ -20,6 +20,10 @@ export const financeRoutes: Routes = [
         loadComponent: () => import('./pages/accounts/accounts.page').then(m => m.AccountsPage),
       },
       {
+        path: 'account-movements/:nombre',
+        loadComponent: () => import('./pages/account-movements-page/account-movements-page.component').then(m => m.AccountMovementsPageComponent)      
+      },
+      {
         path: 'more-settings',
         loadComponent: () => import('./pages/more-settings/more-settings.page').then(m => m.MoreSettingsPage),
       },

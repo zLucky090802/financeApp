@@ -21,6 +21,7 @@ import { MovementsService } from 'src/app/shared/services/movements.service';
 import { AccountResponse } from '../../interfaces/account-response.interfaces';
 import { BalanceCuenta } from '../../interfaces/account-balance.interface';
 import { CardAccountsComponent } from "../../components/card-accounts/card-accounts.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-accounts',
@@ -38,7 +39,8 @@ import { CardAccountsComponent } from "../../components/card-accounts/card-accou
     CommonModule,
     FormsModule,
     CardMovementsPage,
-    CardAccountsComponent
+    CardAccountsComponent,
+    RouterLink
 ],
 })
 export class AccountsPage implements OnInit {
