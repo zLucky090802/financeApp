@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { MovementsService } from 'src/app/shared/services/movements.service';
@@ -18,7 +18,7 @@ import { AccountsService } from '../../accounts.service';
   selector: 'app-account-movements-page',
   templateUrl: './account-movements-page.component.html',
   styleUrls: ['./account-movements-page.component.scss'],
-  imports: [IonicModule, CommonModule, CapitalizePipe, CardMovementsPage]
+  imports: [IonicModule, CommonModule, CapitalizePipe, CardMovementsPage, RouterLink]
 })
 export class AccountMovementsPageComponent  implements OnInit {
   totalIngresos!:number;
@@ -63,6 +63,12 @@ export class AccountMovementsPageComponent  implements OnInit {
       this.totalGastos = resp.totalGastos;
       this.totalIngresos = resp.totalIngresos;
       this.balance = resp.balanceTotal;
+    })
+  }
+
+  deleteMovement(id:number){
+    this.movementsService.deleteMovement(id).subscribe(resp=>{
+      console.log(resp);
     })
   }
 

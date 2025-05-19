@@ -1,13 +1,24 @@
-
-  <ion-row class="card-movements">
-        
-        <ion-col size="8" class="align-left">
-              <p class="title primary-title">{{movements.descripcion}} </p>
-              <p class="date subtitle">{{movements.fecha}}</p>
-              
-        </ion-col>
-        <ion-col size="4" class="align-center "><p  [ngClass]="{
-            'income-amount': movements.tipo === 'ingreso',
-            'expense-amount': movements.tipo === 'gasto'
-          }">{{movements.monto | currency:'USD':'symbol':'1.2-2'  }}</p></ion-col>
-  </ion-row>
+<ion-item-sliding #slidingItem class="card-movements">
+      <ion-item class="custom-item">
+        <ion-label class="ion-text-wrap label-full align-left">
+          <h2 class="title primary-title">{{ movements.descripcion }}</h2>
+          <p class="date subtitle">{{ movements.fecha | date: 'shortDate' }}</p>
+        </ion-label>
+    
+        <ion-note slot="end" class="note-right" [ngClass]="{
+          'income-amount': movements.tipo === 'ingreso',
+          'expense-amount': movements.tipo === 'gasto'
+        }">
+          {{ movements.monto | currency:'USD':'symbol':'1.0-0' }}
+        </ion-note>
+    
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+    
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="onDelete(movements.id)">
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    

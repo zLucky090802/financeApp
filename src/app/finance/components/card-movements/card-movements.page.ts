@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 
 @Component({
@@ -9,15 +9,18 @@ import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface
   templateUrl: './card-movements.page.html',
   styleUrls: ['./card-movements.page.scss'],
   standalone: true,
-  imports: [ IonRow, IonCol, CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class CardMovementsPage implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input()
-  public movements!:Transaccion;
-  ngOnInit() {
-  }
+  public movements!: Transaccion;
+  ngOnInit() {}
 
+  @Output() delete = new EventEmitter<number>();
+
+  onDelete(id: number) {
+    this.delete.emit(id);
+  }
 }

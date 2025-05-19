@@ -1,53 +1,183 @@
+// .card-movements{
+//     display: flex;
+//     margin-bottom: 20px;
+//     background-color: #fff;
+//     border-radius: 10px;
+//     margin-left: 16px;
+//     margin-right: 16px;
+//     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+//     width: 90vw;
+
+// }
+// .income-amount{
+//   color: var(--ion-earnings-color);
+// }
+// .expense-amount{
+//   color: var(--ion-expense-color);
+// }
+
+// .primary-title{
+//     color: var(--ion-title-color);
+//   }
+//   ion-item-option {
+//     border-radius: 8px 8px 8px 8px;
+//     margin: 4px;
+//     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+//   }
+  
+
+//   .title{
+//     font-size: 16px;
+//     font-weight: 500;
+//     height: 10px;
+//   }
+
+//   .align-center {
+//     display: flex;
+//     align-items: center; /* Centra el contenido verticalmente */
+//     justify-content: flex-end; /* Alinea el texto a la derecha */
+//     height: 100; /* Para asegurarse de que ocupa toda la altura disponible */
+//     padding-right: 16px;
+// }
+
+//   .date{
+//     font-size: 10px;
+    
+//   }
+
+//   .align-left{
+//     padding-left: 16px;
+//   }
+
+//   .subtitle{
+//     color: var(--ion-subtitle-color);
+//   }
+
+//   .icon{
+//     color: black;
+//   }
+
+
 .card-movements{
-    display: flex;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-left: 16px;
-    margin-right: 16px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
-    width: 90vw;
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-left: 16px;
+  margin-right: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  width: 90vw;
 
 }
 .income-amount{
-  color: var(--ion-earnings-color);
+color: var(--ion-earnings-color);
 }
 .expense-amount{
-  color: var(--ion-expense-color);
+color: var(--ion-expense-color);
 }
 
 .primary-title{
-    color: var(--ion-title-color);
-  }
-
-  .title{
-    font-size: 16px;
-    font-weight: 500;
-    height: 10px;
-  }
-
-  .align-center {
-    display: flex;
-    align-items: center; /* Centra el contenido verticalmente */
-    justify-content: flex-end; /* Alinea el texto a la derecha */
-    height: 100; /* Para asegurarse de que ocupa toda la altura disponible */
-    padding-right: 16px;
+  color: var(--ion-title-color);
 }
 
-  .date{
-    font-size: 10px;
-    
-  }
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  /* height: 10px; ❌ esto limita la altura y corta el texto */
+  line-height: 1.2; /* ✅ mejor alternativa */
+  margin: 0;
+}
 
-  .align-left{
-    padding-left: 16px;
-  }
 
-  .subtitle{
-    color: var(--ion-subtitle-color);
-  }
+.align-center {
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: flex-end; /* Alinea el texto a la derecha */
+  height: 100; /* Para asegurarse de que ocupa toda la altura disponible */
+  padding-right: 16px;
+}
 
-  .icon{
-    color: black;
-  }
+.date{
+  font-size: 10px;
   
+}
+
+.align-left{
+  padding-left: 16px;
+}
+
+.subtitle{
+  color: var(--ion-subtitle-color);
+}
+
+.icon{
+  color: black;
+}
+
+.card-movements-wrapper {
+  position: relative;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.card-movements-wrapper.slide-left .card-movements {
+  transform: translateX(-90px);
+  transition: transform 0.3s ease;
+}
+
+.delete-button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.card-movements {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-left: 16px;
+  margin-right: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  width: 90vw;
+  transition: transform 0.3s ease;
+  padding: 10px;
+}
+
+.edit-icon {
+  font-size: 20px;
+  margin-left: 10px;
+  color: var(--ion-color-medium);
+  cursor: pointer;
+}
+
+.custom-item {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  width: 100%;
+}
+
+.label-full {
+  width: 100%;
+  text-align: left;
+}
+
+.note-right {
+  margin-left: auto;
+}
+
+.custom-item {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --border-color: transparent; /* ← esto quita el borde */
+  width: 100%;
+}
+

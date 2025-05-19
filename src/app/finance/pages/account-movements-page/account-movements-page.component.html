@@ -8,9 +8,7 @@
                                 
                                 
                                                               <h2 class="username primary-title">{{nombre | capitalize}}</h2>
-                                                              <span class="material-symbols-outlined" >
-                                                                    edit
-                                                              </span>
+                                                             
                                                                   
                           </ion-row>
                     </ion-col>
@@ -42,7 +40,7 @@
         <ion-grid class="movements-container">
           @for (movement of movements.transacciones; track $index) {
 
-            <app-card-movements [movements]="movement"/>
+            <app-card-movements [movements]="movement" [routerLink]="['/add/movements-form', movement.id]" (delete)="deleteMovement($event)"/>
       }
         </ion-grid>
 
