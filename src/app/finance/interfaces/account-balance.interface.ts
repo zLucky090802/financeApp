@@ -6,4 +6,5 @@ export interface BalanceCuenta {
 	balanceTotal: number;
 	totalGastos: number;
 	totalIngresos: number;
+	capitalTotal: number;
 }

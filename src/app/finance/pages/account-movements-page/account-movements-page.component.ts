@@ -22,6 +22,7 @@ import { AccountsService } from '../../accounts.service';
 })
 export class AccountMovementsPageComponent  implements OnInit {
   totalIngresos!:number;
+  capitalTotal!:number;
   totalGastos!:number;
   balance!:number;
   nombre:string  = '';
@@ -63,6 +64,7 @@ export class AccountMovementsPageComponent  implements OnInit {
       this.totalGastos = resp.totalGastos;
       this.totalIngresos = resp.totalIngresos;
       this.balance = resp.balanceTotal;
+      this.capitalTotal = resp.capitalTotal;
     })
   }
 
