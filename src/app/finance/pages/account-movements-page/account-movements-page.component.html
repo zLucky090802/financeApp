@@ -2,18 +2,16 @@
 
   <ion-toolbar class="no-shadow">
         <ion-grid>
-              <ion-row class="header-content">
-                    <ion-col size="12">
-                          <ion-row class="title-container">
-                                
-                                
-                                                              <h2 class="username primary-title">{{nombre | capitalize}}</h2>
-                                                             
-                                                                  
-                          </ion-row>
-                    </ion-col>
-                    
-              </ion-row>
+            <ion-row class="title-container-custom ion-align-items-center ion-justify-content-between">
+                  <ion-col class="ion-no-padding">
+                    <h2 class="username primary-title">{{ nombre | capitalize }}</h2>
+                  </ion-col>
+                  <ion-col size="auto" class="ion-text-right">
+                    <span class="material-symbols-outlined edit-icon" >
+                      edit
+                    </span>
+                  </ion-col>
+                </ion-row>
         </ion-grid>
   </ion-toolbar>
 
