@@ -20,7 +20,7 @@ import { User } from 'src/app/auth/interfaces/user.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 import { RouterLink } from '@angular/router';
-import { ViewWillEnter, ViewDidLeave } from '@ionic/angular';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',

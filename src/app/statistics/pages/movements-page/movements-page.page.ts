@@ -19,6 +19,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MovementsService } from 'src/app/shared/services/movements.service';
 import { TransaccionesResponse } from '../../interfaces/TransacionesResponse.interface';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-movements-page',
@@ -36,7 +37,7 @@ import { TransaccionesResponse } from '../../interfaces/TransacionesResponse.int
     RouterLink
   ],
 })
-export class MovementsPagePage implements OnInit {
+export class MovementsPagePage implements OnInit, ViewWillEnter {
   filter: String = 'all';
   movements: TransaccionesResponse = { transacciones: [] };
   user!: User;
@@ -65,6 +66,15 @@ export class MovementsPagePage implements OnInit {
       this.getMovements();
     });
   }
+
+  ionViewWillEnter() {
+    this.user$ = this.store.select(selectUser);
+    this.user$.subscribe((user) => {
+      this.user = user;
+      this.getMovements();
+    });
+  }
+  
 
   ngAfterViewInit() {
     // El canvas se carga tras obtener movimientos y cuando se renderiza
