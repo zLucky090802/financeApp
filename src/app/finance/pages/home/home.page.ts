@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -20,7 +20,7 @@ import { User } from 'src/app/auth/interfaces/user.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Transaccion } from 'src/app/statistics/interfaces/Transaccion.interface';
 import { RouterLink } from '@angular/router';
-import { ViewWillEnter } from '@ionic/angular';
+import { ViewWillEnter, ViewDidLeave } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +40,7 @@ import { ViewWillEnter } from '@ionic/angular';
     RouterLink
   ],
 })
-export class HomePage implements OnInit,ViewWillEnter {
+export class HomePage implements OnInit,ViewWillEnter, OnDestroy {
   user$!: Observable<any>;
   user!: User;
   movements: TransaccionesResponse = { transacciones: [] };
@@ -61,12 +61,24 @@ export class HomePage implements OnInit,ViewWillEnter {
 
   ionViewWillEnter() {
     // Esto se ejecuta cada vez que entras a la vista
-    this.getBalance();
-    this.loadMovements();
+    this.store.select(selectUser).subscribe((user) => {
+      if (user?.id) {
+        this.user = user;
+        this.getBalance();
+        this.loadMovements();
+      }
+    });
   }
   ngOnInit() {
     // this.getBalance();
   }
+
+  ngOnDestroy(): void {
+    console.log('[HomePage] Destruido');
+    this.movements = { transacciones: [] };
+    this.balance$.next(0);
+  }
+ 
 
   loadMovements() {
     this.movementsService
