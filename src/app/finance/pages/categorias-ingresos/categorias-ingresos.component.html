@@ -1,3 +1,77 @@
-<p>
-  categorias-ingresos works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/finance/more-settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ingreso</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list-header>
+    <ion-label>Subcategorías</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-list-header>
+
+  <ion-reorder-group disabled="false">
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🤑 Dinero mensual</ion-label>
+      <ion-button fill="clear" size="small" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>💰 Salario</ion-label>
+      <ion-button fill="clear" size="small" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>💵 Dinero extra</ion-label>
+      <ion-button fill="clear" size="small" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🏅 Plus</ion-label>
+      <ion-button fill="clear" size="small" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>Otro</ion-label>
+      <ion-button fill="clear" size="small" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-title size="small" class="ion-text-center">
+      <img src="assets/banner.jpg" alt="Publicidad" style="width: 100%; height: auto;" />
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
