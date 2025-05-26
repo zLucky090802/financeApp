@@ -28,6 +28,18 @@ export const financeRoutes: Routes = [
         loadComponent: () => import('./pages/more-settings/more-settings.page').then(m => m.MoreSettingsPage),
       },
       {
+        path:'categorias-ingresos',
+        loadComponent: () => import('./pages/categorias-ingresos/categorias-ingresos.component').then(m=>m.CategoriasIngresosComponent),
+      },
+      {
+        path:'categorias-gastos',
+        loadComponent: () => import('./pages/categorias-gastos/categorias-gastos.component').then(m=>m.CategoriasGastosComponent),
+      },
+      {
+        path:'gestor-cuentas',
+        loadComponent: () => import('./pages/gestor-cuentas/gestor-cuentas.component').then(m=>m.GestorCuentasComponent),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
