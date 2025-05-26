@@ -1,3 +1,140 @@
-<p>
-  categorias-gastos works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/finance/more-settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gastos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none">
+    <ion-label>Subcategorías</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+
+  <ion-reorder-group disabled="false">
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🍜 Comida</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🧑‍🤝‍🧑 Entretenimiento</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🚖 Transporte</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🖼️ Cultura</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🪑 Mantenimiento del hogar</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🧥 Ropa</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>💄 Productos de belleza</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🧘‍♂️ Salud</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>📚 Educación</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>🎁 Regalos</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>Otros</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="remove-circle" slot="start" color="danger"></ion-icon>
+      <ion-label>Hogar</ion-label>
+      <ion-button slot="end" fill="clear">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-title size="small" class="ion-text-center">
+      <img src="assets/samsung-banner.jpg" alt="Publicidad" style="width: 100%; height: auto;" />
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
